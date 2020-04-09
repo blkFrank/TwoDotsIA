@@ -6,6 +6,13 @@ public class Cell {
     private Color color;
     private Status status;
 
+    public Cell() {
+        this.row = 0;
+        this.col = 0;
+        this.color = null;
+        this.status = null;
+    }
+
     public Cell(Color color, Status status) {
         this.row = 0;
         this.col = 0;

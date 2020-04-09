@@ -9,15 +9,17 @@ public class Texture {
     private BufferedImage greenCell = null;
     private BufferedImage greyCell = null;
     private BufferedImage blueCell = null;
+    private BufferedImage selectedCell = null;
 
     BufferedImageLoader loader = new BufferedImageLoader();
 
     public Texture() {
-        yellowCell = loader.loadBufferedImage("/home/francesco/IdeaProjects/TwoDotsIA/res/yellow.png");
-        redCell = loader.loadBufferedImage("/home/francesco/IdeaProjects/TwoDotsIA/res/red.png");
-        greenCell = loader.loadBufferedImage("/home/francesco/IdeaProjects/TwoDotsIA/res/green.png");
-        greyCell = loader.loadBufferedImage("/home/francesco/IdeaProjects/TwoDotsIA/res/grey.png");
-        blueCell = loader.loadBufferedImage("/home/francesco/IdeaProjects/TwoDotsIA/res/blue.png");
+        yellowCell = loader.loadBufferedImage("/yellow.png");
+        redCell = loader.loadBufferedImage("/red.png");
+        greenCell = loader.loadBufferedImage("/green.png");
+        greyCell = loader.loadBufferedImage("/grey.png");
+        blueCell = loader.loadBufferedImage("/blue.png");
+        selectedCell = loader.loadBufferedImage("/selected.png");
     }
 
     public BufferedImage getYellowCell() {
@@ -58,5 +60,21 @@ public class Texture {
 
     public void setBlueCell(BufferedImage blueCell) {
         this.blueCell = blueCell;
+    }
+
+    public BufferedImage getSelectedCell() {
+        return selectedCell;
+    }
+
+    public void setSelectedCell(BufferedImage selectedCell) {
+        this.selectedCell = selectedCell;
+    }
+
+    public BufferedImageLoader getLoader() {
+        return loader;
+    }
+
+    public void setLoader(BufferedImageLoader loader) {
+        this.loader = loader;
     }
 }

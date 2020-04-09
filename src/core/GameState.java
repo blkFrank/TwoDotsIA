@@ -2,8 +2,10 @@ package core;
 
 import graphic.Texture;
 import input.MouseInput;
+import object.Cell;
 import object.Color;
 import object.Matrix;
+import object.Status;
 
 import java.awt.*;
 
@@ -17,13 +19,19 @@ public class GameState{
 
     public GameState() {
         matrix = new Matrix();
-        mi = new MouseInput();
+        mi = new MouseInput(matrix);
         tex = new Texture();
     }
 
-    public static MouseInput getMouseInput() { return mi; }
-
     public void tick() {
+
+        for (int col = 0; col < matrix.getDim(); col++) {
+            for (int row = 0; row < matrix.getDim(); row++) {
+                /*
+                if (matrix.getElement(col,row).getStatus().equals(Status.SELECTED))
+                */
+            }
+        }
 
     }
 
@@ -43,8 +51,13 @@ public class GameState{
                     g.drawImage(tex.getGreenCell(), col * 100, row * 100, 100, 100, null);
                 if (matrix.getElement(col, row).getColor().equals(Color.GREY))
                     g.drawImage(tex.getGreyCell(), col * 100, row * 100, 100, 100, null);
+
+                if (matrix.getElement(col,row).getStatus().equals(Status.SELECTED))
+                    g.drawImage(tex.getSelectedCell(), col * 100, row * 100, 100, 100, null);
             }
         }
     }
+
+    public static MouseInput getMouseInput() { return mi; }
 
 }

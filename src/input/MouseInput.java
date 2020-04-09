@@ -1,6 +1,8 @@
 package input;
 
 import core.GameConfig;
+import object.Matrix;
+import object.Status;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -11,83 +13,61 @@ import java.awt.event.MouseWheelListener;
 public class MouseInput implements MouseListener, MouseMotionListener, MouseWheelListener {
 
     private int mouseX, mouseY;
-    private int scroll;
 
-    private final int NUM_BUTTONS = 5;
-    private boolean[] buttons = new boolean[NUM_BUTTONS];
-    private boolean[] buttonsLast = new boolean[NUM_BUTTONS];
+    private final int NUM_CELLS = 36;
 
+    private Matrix matrix;
 
-    public MouseInput() {
+    public MouseInput(Matrix matrix) {
         mouseX = 0;
         mouseY = 0;
-        scroll = 0;
+        this.matrix = matrix;
     }
 
     public void tick() {
-        scroll = 0;
-        for (int i = 0; i < NUM_BUTTONS; i++) {
-            buttonsLast[i] = buttons[i];
-        }
+
     }
 
     public void mouseClicked(MouseEvent arg0) {
-        // TODO Auto-generated method stub
-
+        System.out.println("Mouse pressed in: " + getX() + " " + getY());
+        matrix.setElementStatus(getY(), getX(), Status.SELECTED);
     }
 
     @Override
     public void mouseEntered(MouseEvent arg0) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void mouseExited(MouseEvent arg0) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        buttons[e.getButton()] = true;
+        System.out.println("pressed");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        buttons[e.getButton()] = false;
+
     }
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        scroll = e.getWheelRotation();
+
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        mouseX = (int)(e.getX() / GameConfig.SCALE);
-        mouseY = (int)(e.getY() / GameConfig.SCALE);
+
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        mouseX = e.getX();
-        mouseY = e.getY();
-
+        mouseX = (int)(e.getX() / 100);
+        mouseY = (int)(e.getY() / 100);
     }
-
-    public boolean isButton(int buttonCode) {
-        return buttons[buttonCode];
-    }
-
-    public boolean isButtonUp(int buttonCode) {
-        return !buttons[buttonCode] && buttonsLast[buttonCode];
-    }
-
-    public boolean isButtonDown(int buttonCode) {
-        return buttons[buttonCode] && !buttonsLast[buttonCode];
-    }
-
 
     public int getX() {
         return mouseX;
@@ -97,8 +77,5 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
         return mouseY;
     }
 
-    public int getScroll() {
-        return scroll;
-    }
 }
 

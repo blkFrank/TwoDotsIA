@@ -19,8 +19,8 @@ public class GameManager implements Runnable {
     private long targetTime = 1000 / FPS;
 
     public void start() {
-        window = new Window("TwoDots", GameConfig.WIDTH-25, GameConfig.HEIGHT-20, GameConfig.SCALE, GameState.getMouseInput(), this);
         gs = new GameState();
+        window = new Window("TwoDots", GameConfig.WIDTH, GameConfig.HEIGHT, GameConfig.SCALE, GameState.getMouseInput(), this);
         this.run();
     }
 
