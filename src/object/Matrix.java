@@ -40,6 +40,27 @@ public class Matrix {
         refreshCellPosition();
     }
 
+    public boolean validSelectedCells(Vector<Cell> selected){
+        for (int i = 1; i < selected.size(); i++) {
+            if (inSequence(selected.get(i), selected.get(i-1)) == false )
+                return false;
+        }
+        return true;
+    }
+
+    public boolean inSequence(Cell a, Cell b){
+        if (a.getRow() == b.getRow()-1 && a.getCol() == b.getCol())
+            return true;
+        if (a.getRow() == b.getRow()+1 && a.getCol() == b.getCol())
+            return true;
+        if (a.getRow() == b.getRow() && a.getCol() == b.getCol()-1)
+            return true;
+        if (a.getRow() == b.getRow() && a.getCol() == b.getCol()+1)
+            return true;
+
+        return false;
+    }
+
     public boolean ColorEqual(Vector<Cell> c){
         Color color = c.get(0).getColor();
         for (int i = 1; i < c.size(); i++) {

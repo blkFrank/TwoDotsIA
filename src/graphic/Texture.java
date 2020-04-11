@@ -26,55 +26,21 @@ public class Texture {
         return yellowCell;
     }
 
-    public void setYellowCell(BufferedImage yellowCell) {
-        this.yellowCell = yellowCell;
-    }
-
     public BufferedImage getRedCell() {
         return redCell;
-    }
-
-    public void setRedCell(BufferedImage redCell) {
-        this.redCell = redCell;
     }
 
     public BufferedImage getGreenCell() {
         return greenCell;
     }
 
-    public void setGreenCell(BufferedImage greenCell) {
-        this.greenCell = greenCell;
-    }
-
     public BufferedImage getGreyCell() {
         return greyCell;
-    }
-
-    public void setGreyCell(BufferedImage greyCell) {
-        this.greyCell = greyCell;
     }
 
     public BufferedImage getBlueCell() {
         return blueCell;
     }
 
-    public void setBlueCell(BufferedImage blueCell) {
-        this.blueCell = blueCell;
-    }
-
-    public BufferedImage getSelectedCell() {
-        return selectedCell;
-    }
-
-    public void setSelectedCell(BufferedImage selectedCell) {
-        this.selectedCell = selectedCell;
-    }
-
-    public BufferedImageLoader getLoader() {
-        return loader;
-    }
-
-    public void setLoader(BufferedImageLoader loader) {
-        this.loader = loader;
-    }
+    public BufferedImage getSelectedCell() { return selectedCell; }
 }

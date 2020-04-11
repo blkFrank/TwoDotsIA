@@ -15,8 +15,6 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
 
     private int mouseX, mouseY;
 
-    private InputStatus status = InputStatus.RELEASED;
-
     private Matrix matrix;
 
     Vector<Cell> cellSelected;
@@ -29,37 +27,15 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        setStatus(InputStatus.CLICKED);
-        System.out.println("Mouse clicked in: riga:" + getY() + " colonna:" + getX());
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        setStatus(InputStatus.PRESSED);
-        System.out.println("Mouse pressed in: riga:" + getY() + " colonna:" + getX());
-    }
-
-    @Override
     public void mouseReleased(MouseEvent e) {
-        setStatus(InputStatus.RELEASED);
         System.out.println("Mouse released in: riga:" + getY() + " colonna:" + getX());
         System.out.println("CellSelected size: " + cellSelected.size());
         matrix.printMatrix();
-        if(matrix.ColorEqual(cellSelected)){
+        if(cellSelected.size() > 1 && matrix.ColorEqual(cellSelected) && matrix.validSelectedCells(cellSelected)){
             for (int i = 0; i < cellSelected.size(); i++) {
                 matrix.setElementStatus(cellSelected.get(i).getRow(), cellSelected.get(i).getCol(), Status.DELETED);
             }
+
             matrix.setScore(cellSelected.size()*10);
             matrix.refreshMatrix();
         } else {
@@ -72,13 +48,7 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
     }
 
     @Override
-    public void mouseWheelMoved(MouseWheelEvent e) {
-
-    }
-
-    @Override
     public void mouseDragged(MouseEvent e) {
-        setStatus(InputStatus.DRAGGED);
         mouseX = (int)(e.getX() / 100);
         mouseY = (int)(e.getY() / 100);
         System.out.println("Mouse dragged in: riga:" + getY() + " colonna:" + getX());
@@ -86,11 +56,6 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
             matrix.setElementStatus(getY(), getX(), Status.SELECTED);
             cellSelected.add(matrix.getElement(getY(), getX()));
         }
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        setStatus(InputStatus.MOVED);
     }
 
     public int getX() {
@@ -101,12 +66,24 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
         return mouseY;
     }
 
-    public InputStatus getStatus() {
-        return status;
-    }
 
-    public void setStatus(InputStatus status) {
-        this.status = status;
-    }
+    @Override
+    public void mouseClicked(MouseEvent e) { }
+
+    @Override
+    public void mouseEntered(MouseEvent e) { }
+
+    @Override
+    public void mouseExited(MouseEvent e) { }
+
+    @Override
+    public void mousePressed(MouseEvent e) { }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) { }
+
+    @Override
+    public void mouseMoved(MouseEvent e) { }
+
 }
 

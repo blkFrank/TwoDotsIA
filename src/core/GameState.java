@@ -1,16 +1,12 @@
 package core;
 
 import graphic.Texture;
-import input.InputStatus;
 import input.MouseInput;
-import object.Cell;
 import object.Color;
 import object.Matrix;
 import object.Status;
 
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.List;
 
 public class GameState{
 
