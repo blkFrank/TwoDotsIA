@@ -77,4 +77,5 @@ public class Matrix {
     public Vector<Vector<Cell>> getMatrix() {
         return matrix;
     }
+
 }

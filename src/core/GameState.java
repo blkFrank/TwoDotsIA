@@ -1,6 +1,7 @@
 package core;
 
 import graphic.Texture;
+import input.InputStatus;
 import input.MouseInput;
 import object.Cell;
 import object.Color;
@@ -8,6 +9,8 @@ import object.Matrix;
 import object.Status;
 
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class GameState{
 
@@ -17,22 +20,17 @@ public class GameState{
 
     private static Texture tex;
 
-    public GameState() {
+    private List<Cell> selectedCell;
+
+     public GameState() {
         matrix = new Matrix();
         mi = new MouseInput(matrix);
         tex = new Texture();
+        selectedCell = new LinkedList<>();
     }
 
     public void tick() {
-
-        for (int col = 0; col < matrix.getDim(); col++) {
-            for (int row = 0; row < matrix.getDim(); row++) {
-                /*
-                if (matrix.getElement(col,row).getStatus().equals(Status.SELECTED))
-                */
-            }
-        }
-
+        mi.tick();
     }
 
     public static void render(Graphics g) {

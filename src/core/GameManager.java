@@ -70,7 +70,6 @@ public class GameManager implements Runnable {
     }
 
     public void tick() {
-        gs.getMouseInput().tick();
         gs.tick();
     }
 
@@ -82,18 +81,6 @@ public class GameManager implements Runnable {
         GameManager gm = new GameManager();
         gm.start();
 
-        Matrix matrix = new Matrix();
-
-        matrix.printMatrix();
-
-        matrix.setElementStatus(0,0, Status.DELETED);
-        matrix.setElementStatus(0,1, Status.DELETED);
-        matrix.setElementStatus(1,1, Status.DELETED);
-        matrix.setElementStatus(2,1, Status.DELETED);
-
-        matrix.refreshMatrix();
-
-        matrix.printMatrix();
     }
 
 }
