@@ -52,8 +52,6 @@ public class GameManager implements Runnable {
                 unprocessedTime -= UPDATE_CAP;
                 render = true;
 
-                tick();
-
                 if (frameTime >= 1.0)
                 {
                     frameTime = 0;
@@ -67,10 +65,6 @@ public class GameManager implements Runnable {
                 frames++;
             }
         }
-    }
-
-    public void tick() {
-        gs.tick();
     }
 
     public void render(Graphics g) {

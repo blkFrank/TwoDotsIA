@@ -16,7 +16,7 @@ public class MyPanel extends JPanel {
 
     public MyPanel(int width, int height, int scale, GameManager gm) {
         this.gm = gm;
-        Dimension s = new Dimension((int)width * scale, (int) height * scale);
+        Dimension s = new Dimension((int)width * scale, (int) height * scale + 50);
         font = new Font("Comic Sans Ms",Font.BOLD, 30);
         this.setPreferredSize(s);
         this.setMaximumSize(s);
