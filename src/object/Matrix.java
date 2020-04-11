@@ -42,7 +42,7 @@ public class Matrix {
 
     public boolean validSelectedCells(Vector<Cell> selected){
         for (int i = 1; i < selected.size(); i++) {
-            if (inSequence(selected.get(i), selected.get(i-1)) == false )
+            if (!inSequence(selected.get(i), selected.get(i-1)))
                 return false;
         }
         return true;

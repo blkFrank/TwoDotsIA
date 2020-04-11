@@ -7,11 +7,9 @@ import object.Status;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.util.Vector;
 
-public class MouseInput implements MouseListener, MouseMotionListener, MouseWheelListener {
+public class MouseInput implements MouseListener, MouseMotionListener {
 
     private int mouseX, mouseY;
 
@@ -78,9 +76,6 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
 
     @Override
     public void mousePressed(MouseEvent e) { }
-
-    @Override
-    public void mouseWheelMoved(MouseWheelEvent e) { }
 
     @Override
     public void mouseMoved(MouseEvent e) { }
