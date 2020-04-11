@@ -1,5 +1,5 @@
 package input;
 
 public enum InputStatus {
-    CLICKED, MOVED, PRESSED, RELEASED
+    CLICKED, DRAGGED, MOVED, PRESSED, RELEASED
 }

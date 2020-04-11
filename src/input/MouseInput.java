@@ -47,7 +47,6 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
     public void mousePressed(MouseEvent e) {
         setStatus(InputStatus.PRESSED);
         System.out.println("Mouse pressed in: " + getX() + " " + getY());
-        matrix.setElementStatus(getX(), getY(), Status.SELECTED);
     }
 
     @Override
@@ -63,14 +62,16 @@ public class MouseInput implements MouseListener, MouseMotionListener, MouseWhee
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
+        setStatus(InputStatus.DRAGGED);
+        mouseX = (int)(e.getX() / 100);
+        mouseY = (int)(e.getY() / 100);
+        System.out.println("Mouse dragged in: " + getX() + " " + getY());
+        matrix.setElementStatus(getX(), getY(), Status.SELECTED);
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
         setStatus(InputStatus.MOVED);
-        mouseX = (int)(e.getX() / 100);
-        mouseY = (int)(e.getY() / 100);
     }
 
     public int getX() {
