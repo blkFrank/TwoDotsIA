@@ -1,9 +1,6 @@
 package core;
 
 import graphic.Window;
-import object.Matrix;
-import object.Status;
-
 import java.awt.Graphics;
 
 public class GameManager implements Runnable {
@@ -52,6 +49,9 @@ public class GameManager implements Runnable {
                 unprocessedTime -= UPDATE_CAP;
                 render = true;
 
+                /* UNCOMMENT TO ENABLE IA SOLVER */
+                //tick();
+
                 if (frameTime >= 1.0)
                 {
                     frameTime = 0;
@@ -66,6 +66,8 @@ public class GameManager implements Runnable {
             }
         }
     }
+
+    public void tick() {gs.tick();}
 
     public void render(Graphics g) {
         gs.render(g);

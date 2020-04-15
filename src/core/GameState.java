@@ -1,12 +1,15 @@
 package core;
 
 import graphic.Texture;
+import input.DLVSolver;
 import input.MouseInput;
+import object.Cell;
 import object.Color;
 import object.Matrix;
 import object.Status;
 
 import java.awt.*;
+import java.util.Vector;
 
 public class GameState{
 
@@ -14,11 +17,14 @@ public class GameState{
 
     private static MouseInput mi;
 
+    private DLVSolver solver;
+
     private static Texture tex;
 
      public GameState() {
         matrix = new Matrix();
-        mi = new MouseInput(matrix);
+        mi = new MouseInput(this);
+        solver = new DLVSolver(matrix);
         tex = new Texture();
     }
 
@@ -45,6 +51,48 @@ public class GameState{
         }
 
         g.drawString("Score: " + matrix.getScore(), 250, 625);
+    }
+
+    public void tick() {
+        Vector<Cell> cellSelected = solver.initCellSelected();
+
+        for (int i = 0; i < cellSelected.size(); i++) {
+            matrix.setElementStatus(cellSelected.get(i).getRow(), cellSelected.get(i).getCol(), Status.DELETED);
+            try {
+                wait(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        matrix.setScore(cellSelected.size()*10);
+
+        solver.refreshProgramFact();
+    }
+
+    public void doMove() {
+        if (!matrix.getElementStatus(mi.getY(), mi.getX()).equals(Status.SELECTED)) {
+            matrix.setElementStatus(mi.getY(), mi.getX(), Status.SELECTED);
+            matrix.addCellSelected(matrix.getElement(mi.getY(), mi.getX()));
+        }
+    }
+
+    public void checkMove() {
+        matrix.printMatrix();
+        if(matrix.getCellSelected().size() > 1 && matrix.ColorEqual(matrix.getCellSelected()) && matrix.validSelectedCells(matrix.getCellSelected())){
+            for (int i = 0; i < matrix.getCellSelected().size(); i++) {
+                matrix.setElementStatus(matrix.getCellSelected(i).getRow(), matrix.getCellSelected(i).getCol(), Status.DELETED);
+            }
+
+            matrix.setScore(matrix.getCellSelected().size()*10);
+            matrix.refreshMatrix();
+        } else {
+            for (int i = 0; i < matrix.getCellSelected().size(); i++) {
+                matrix.setElementStatus(matrix.getCellSelected(i).getRow(), matrix.getCellSelected(i).getCol(), Status.IDLE);
+            }
+        }
+        matrix.printMatrix();
+        matrix.clearCellSelected();
     }
 
     public static MouseInput getMouseInput() { return mi; }

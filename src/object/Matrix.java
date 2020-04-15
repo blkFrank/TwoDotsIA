@@ -8,10 +8,13 @@ public class Matrix {
 
     private Vector<Vector<Cell>> matrix;
 
+    Vector<Cell> cellSelected;
+
     private int score;
 
     public Matrix(){
         matrix = new Vector<>();
+        cellSelected = new Vector<>();
         score = 0;
         for (int i = 0; i<dim; i++){
             Vector<Cell> col = new Vector<>();
@@ -21,7 +24,6 @@ public class Matrix {
             }
             matrix.add(col);
         }
-
         refreshCellPosition();
     }
 
@@ -116,5 +118,21 @@ public class Matrix {
 
     public void setScore(int score) {
         this.score += score;
+    }
+
+    public Vector<Cell> getCellSelected() {
+        return cellSelected;
+    }
+
+    public void addCellSelected(Cell c) {
+        cellSelected.add(c);
+    }
+
+    public Cell getCellSelected(int i) {
+        return cellSelected.get(i);
+    }
+
+    public void clearCellSelected() {
+        cellSelected.clear();
     }
 }
