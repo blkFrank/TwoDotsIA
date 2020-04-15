@@ -1,8 +1,18 @@
 package object;
 
+import it.unical.mat.embasp.languages.Id;
+import it.unical.mat.embasp.languages.Param;
+
+@Id("cell")
 public class Cell {
+
+    @Param(0)
     private int row;
+
+    @Param(1)
     private int col;
+
+    @Param(2)
     private Color color;
     private Status status;
 

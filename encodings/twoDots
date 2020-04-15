@@ -1,0 +1,16 @@
+row(0..5).
+col(0..5).
+color(yellow).
+color(red).
+color(green).
+color(grey).
+color(blue).
+
+near(ROW, COL, ROW1, COL1) :- cell(ROW, COL, _), cell(ROW1, COL1, _), ROW = ROW1 - 1.
+near(ROW, COL, ROW1, COL1) :- cell(ROW, COL, _), cell(ROW1, COL1, _), ROW = ROW1 + 1.
+near(ROW, COL, ROW1, COL1) :- cell(ROW, COL, _), cell(ROW1, COL1, _), COL = COL1 - 1.
+near(ROW, COL, ROW1, COL1) :- cell(ROW, COL, _), cell(ROW1, COL1, _), COL = COL1 + 1.
+
+inSequence(ROW, COL, ROW1, COL1) | notInSequence(ROW, COL, ROW1, COL1):-near(ROW, COL, ROW1, COL1), cell(ROW, COL, COLOR), cell(ROW1, COL1, COLOR).
+
+:- inSequence(ROW, COL, ROW1, COL1), cell(ROW, COL, COLOR), cell(ROW1, COL1, COLOR), COLOR<>COLOR1.
