@@ -120,7 +120,7 @@ public class Matrix {
         this.score += score;
     }
 
-    public Vector<Cell> getCellSelected() {
+    public Vector<Cell> getElementOfCellSelected() {
         return cellSelected;
     }
 
@@ -128,7 +128,7 @@ public class Matrix {
         cellSelected.add(c);
     }
 
-    public Cell getCellSelected(int i) {
+    public Cell getElementOfCellSelected(int i) {
         return cellSelected.get(i);
     }
 

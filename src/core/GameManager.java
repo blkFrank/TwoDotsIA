@@ -67,7 +67,9 @@ public class GameManager implements Runnable {
         }
     }
 
-    public void tick() {gs.tick();}
+    public void tick() {
+        gs.tick();
+    }
 
     public void render(Graphics g) {
         gs.render(g);

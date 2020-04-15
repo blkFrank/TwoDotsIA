@@ -79,16 +79,16 @@ public class GameState{
 
     public void checkMove() {
         matrix.printMatrix();
-        if(matrix.getCellSelected().size() > 1 && matrix.ColorEqual(matrix.getCellSelected()) && matrix.validSelectedCells(matrix.getCellSelected())){
-            for (int i = 0; i < matrix.getCellSelected().size(); i++) {
-                matrix.setElementStatus(matrix.getCellSelected(i).getRow(), matrix.getCellSelected(i).getCol(), Status.DELETED);
+        if(matrix.getElementOfCellSelected().size() > 1 && matrix.ColorEqual(matrix.getElementOfCellSelected()) && matrix.validSelectedCells(matrix.getElementOfCellSelected())){
+            for (int i = 0; i < matrix.getElementOfCellSelected().size(); i++) {
+                matrix.setElementStatus(matrix.getElementOfCellSelected(i).getRow(), matrix.getElementOfCellSelected(i).getCol(), Status.DELETED);
             }
 
-            matrix.setScore(matrix.getCellSelected().size()*10);
+            matrix.setScore(matrix.getElementOfCellSelected().size()*10);
             matrix.refreshMatrix();
         } else {
-            for (int i = 0; i < matrix.getCellSelected().size(); i++) {
-                matrix.setElementStatus(matrix.getCellSelected(i).getRow(), matrix.getCellSelected(i).getCol(), Status.IDLE);
+            for (int i = 0; i < matrix.getElementOfCellSelected().size(); i++) {
+                matrix.setElementStatus(matrix.getElementOfCellSelected(i).getRow(), matrix.getElementOfCellSelected(i).getCol(), Status.IDLE);
             }
         }
         matrix.printMatrix();
